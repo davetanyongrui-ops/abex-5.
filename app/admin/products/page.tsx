@@ -131,7 +131,10 @@ export default function AdminProductsPage() {
                     method: "POST",
                     body: pdfFormData,
                 });
-                if (!pdfResponse.ok) throw new Error("Failed to upload PDF");
+                if (!pdfResponse.ok) {
+                    const errorData = await pdfResponse.json();
+                    throw new Error(`PDF Upload Failed: ${errorData.error || pdfResponse.statusText}`);
+                }
                 const pdfResData = await pdfResponse.json();
                 finalPdfUrl = pdfResData.url;
             }
