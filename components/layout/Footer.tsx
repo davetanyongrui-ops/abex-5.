@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Link, usePathname } from "@/i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
-import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter, Instagram, ChevronRight } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Youtube, Instagram, ChevronRight } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useAdminEdit } from "@/components/admin/AdminEditProvider";
 import { InlineText } from "@/components/admin/InlineText";
@@ -63,10 +63,23 @@ export function Footer() {
                             {t("description")}
                         </p>
                         <div className="flex space-x-5 pt-2">
-                            <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors"><Facebook size={20} /></a>
-                            <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors"><Linkedin size={20} /></a>
-                            <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors"><Twitter size={20} /></a>
-                            <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors"><Instagram size={20} /></a>
+                            <a href="https://www.facebook.com/share/1BG9mY5jkG/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-500 transition-colors" title="Facebook"><Facebook size={20} /></a>
+                            <a href="https://www.instagram.com/abex.engineering/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-500 transition-colors" title="Instagram"><Instagram size={20} /></a>
+                            <a href="https://youtube.com/@abexengineering?si=6wItAfzn4bZ8EPwC" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-500 transition-colors" title="YouTube"><Youtube size={20} /></a>
+                            <a href="https://www.tiktok.com/@abexengr" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-500 transition-colors" title="TikTok">
+                                <svg 
+                                    viewBox="0 0 24 24" 
+                                    width="20" 
+                                    height="20" 
+                                    stroke="currentColor" 
+                                    strokeWidth="2" 
+                                    fill="none" 
+                                    strokeLinecap="round" 
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
 
