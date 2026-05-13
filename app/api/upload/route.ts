@@ -25,13 +25,16 @@ export async function POST(request: Request) {
         const { data, error } = await supabaseAdmin.storage
             .from("product-images")
             .upload(fileName, buffer, {
-                contentType: file.type || "image/png",
+                contentType: file.type || "application/octet-stream",
                 upsert: false
             });
 
         if (error) {
-            console.error("Storage upload error:", error);
-            return NextResponse.json({ error: error.message }, { status: 500 });
+            console.error("Supabase Storage Error:", error);
+            return NextResponse.json({ 
+                error: error.message,
+                details: error
+            }, { status: 500 });
         }
 
         const { data: publicUrlData } = supabaseAdmin.storage
