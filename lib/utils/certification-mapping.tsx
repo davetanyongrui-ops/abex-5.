@@ -1,24 +1,34 @@
 import Image from "next/image";
 import { FaCertificate, FaShieldAlt, FaLeaf, FaCheckCircle } from "react-icons/fa";
 
-export const CERTIFICATION_MAP: Record<string, { label: string; icon: any; color: string; logo: string }> = {
+export const CERTIFICATION_MAP: Record<string, { label: string; icon: any; color: string; logo: string; priority: number }> = {
     "ISO 9001": {
         label: "ISO 9001",
         icon: FaCertificate,
         color: "text-blue-600 bg-blue-50 border-blue-100",
         logo: "/images/cert-iso9001.png",
+        priority: 1,
     },
     "Singapore Green Building Council": {
         label: "SGBC",
         icon: FaLeaf,
         color: "text-green-600 bg-green-50 border-green-100",
         logo: "/images/cert-sgbc.png",
+        priority: 2,
     },
     "Setsco": {
         label: "Setsco",
         icon: FaShieldAlt,
         color: "text-slate-600 bg-slate-50 border-slate-200",
         logo: "/images/cert-setsco.png",
+        priority: 3,
+    },
+    "bizSAFE Level 3": {
+        label: "bizSAFE 3",
+        icon: FaCheckCircle,
+        color: "text-orange-600 bg-orange-50 border-orange-100",
+        logo: "/images/bizsafe3_logo.png",
+        priority: 4,
     },
 };
 
@@ -45,9 +55,16 @@ export function CertificationBadge({ cert }: { cert: string }) {
 export function CertificationsList({ certifications }: { certifications?: string[] }) {
     if (!certifications || certifications.length === 0) return null;
 
+    // Sort certifications based on priority
+    const sortedCerts = [...certifications].sort((a, b) => {
+        const priorityA = CERTIFICATION_MAP[a]?.priority || 99;
+        const priorityB = CERTIFICATION_MAP[b]?.priority || 99;
+        return priorityA - priorityB;
+    });
+
     return (
         <div className="flex flex-wrap gap-3">
-            {certifications.map((cert) => (
+            {sortedCerts.map((cert) => (
                 <CertificationBadge key={cert} cert={cert} />
             ))}
         </div>
