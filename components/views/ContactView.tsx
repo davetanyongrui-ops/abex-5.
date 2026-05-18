@@ -95,102 +95,93 @@ export function ContactView({ isEditable = false, initialData }: ContactViewProp
                             )}
                         </p>
 
-                        <div className="space-y-8">
+                        <div className="space-y-6">
+
+                            {/* Address */}
                             <div className="flex items-start">
                                 <div className="flex-shrink-0 bg-white p-3 border border-slate-200 shadow-sm rounded-lg text-blue-600">
                                     <MapPin className="w-6 h-6" />
                                 </div>
                                 <div className="ml-5">
-                                    <h3 className="text-lg font-bold text-slate-900 uppercase tracking-tight">
+                                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest">
                                         {isEditable ? (
-                                            <InlineText
-                                                as="span"
-                                                content={getLabel('infoTitle')}
-                                                className={getClasses('infoTitle')}
-                                                onUpdate={(data) => handleUpdate('infoTitle', data)}
-                                            />
+                                            <InlineText as="span" content={getLabel('infoTitle')} className={getClasses('infoTitle')} onUpdate={(data) => handleUpdate('infoTitle', data)} />
                                         ) : (
                                             <span className={getClasses('infoTitle')}>{getLabel('infoTitle')}</span>
                                         )}
                                     </h3>
-                                    <p className="mt-1 text-slate-500 whitespace-pre-line">
+                                    <p className="mt-1 text-slate-500 whitespace-pre-line text-sm">
                                         {isEditable ? (
-                                            <InlineText
-                                                as="div"
-                                                content={getLabel('address')}
-                                                className={getClasses('address')}
-                                                onUpdate={(data) => handleUpdate('address', data)}
-                                            />
+                                            <InlineText as="div" content={getLabel('address')} className={getClasses('address')} onUpdate={(data) => handleUpdate('address', data)} />
                                         ) : (
                                             <div className={getClasses('address')}>{getLabel('address')}</div>
                                         )}
                                     </p>
                                 </div>
                             </div>
+
+                            {/* General Enquiries — Phone icon */}
                             <div className="flex items-start">
                                 <div className="flex-shrink-0 bg-white p-3 border border-slate-200 shadow-sm rounded-lg text-slate-900">
-                                    <Mail className="w-6 h-6" />
+                                    <Phone className="w-6 h-6" />
                                 </div>
-                                <div className="ml-5 space-y-6">
-                                    <div>
-                                        <h3 className="text-lg font-bold text-slate-900 uppercase tracking-tight">
-                                            {isEditable ? (
-                                                <InlineText as="span" content={getLabel('generalEnquiries')} className={getClasses('generalEnquiries')} onUpdate={(data) => handleUpdate('generalEnquiries', data)} />
-                                            ) : (
-                                                <span className={getClasses('generalEnquiries')}>{getLabel('generalEnquiries')}</span>
-                                            )}
-                                        </h3>
-                                        <div className="mt-1 text-slate-500 text-sm">
-                                            {isEditable ? (
-                                                <div className="space-y-1">
-                                                    <InlineText as="div" content={getLabel('generalEmail')} className={getClasses('generalEmail')} onUpdate={(data) => handleUpdate('generalEmail', data)} />
-                                                    <InlineText as="div" content={getLabel('generalTel')} className={getClasses('generalTel')} onUpdate={(data) => handleUpdate('generalTel', data)} />
-                                                </div>
-                                            ) : (
-                                                <div className="space-y-1">
-                                                    <div className={getClasses('generalEmail')}>{getLabel('generalEmail')}</div>
-                                                    <div className={getClasses('generalTel')}>{getLabel('generalTel')}</div>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <h3 className="text-lg font-bold text-slate-900 uppercase tracking-tight">
-                                            {isEditable ? (
-                                                <InlineText as="span" content={getLabel('hvacEnquiries')} className={getClasses('hvacEnquiries')} onUpdate={(data) => handleUpdate('hvacEnquiries', data)} />
-                                            ) : (
-                                                <span className={getClasses('hvacEnquiries')}>{getLabel('hvacEnquiries')}</span>
-                                            )}
-                                        </h3>
-                                        <div className="mt-1 text-slate-500 text-sm">
-                                            {isEditable ? (
-                                                <InlineText as="div" content={getLabel('hvacEmail')} className={getClasses('hvacEmail')} onUpdate={(data) => handleUpdate('hvacEmail', data)} />
-                                            ) : (
-                                                <div className={getClasses('hvacEmail')}>{getLabel('hvacEmail')}</div>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <h3 className="text-lg font-bold text-slate-900 uppercase tracking-tight">
-                                            {isEditable ? (
-                                                <InlineText as="span" content={getLabel('firePoolEnquiries')} className={getClasses('firePoolEnquiries')} onUpdate={(data) => handleUpdate('firePoolEnquiries', data)} />
-                                            ) : (
-                                                <span className={getClasses('firePoolEnquiries')}>{getLabel('firePoolEnquiries')}</span>
-                                            )}
-                                        </h3>
-                                        <div className="mt-1 text-slate-500 text-sm">
-                                            {isEditable ? (
-                                                <InlineText as="div" content={getLabel('firePoolEmail')} className={getClasses('firePoolEmail')} onUpdate={(data) => handleUpdate('firePoolEmail', data)} />
-                                            ) : (
-                                                <div className={getClasses('firePoolEmail')}>{getLabel('firePoolEmail')}</div>
-                                            )}
-                                        </div>
+                                <div className="ml-5">
+                                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest">
+                                        {isEditable ? (
+                                            <InlineText as="span" content={getLabel('generalEnquiries')} className={getClasses('generalEnquiries')} onUpdate={(data) => handleUpdate('generalEnquiries', data)} />
+                                        ) : (
+                                            <span className={getClasses('generalEnquiries')}>{getLabel('generalEnquiries')}</span>
+                                        )}
+                                    </h3>
+                                    <div className="mt-1 text-slate-600 text-sm font-medium">
+                                        {isEditable ? (
+                                            <InlineText as="div" content={getLabel('generalTel')} className={getClasses('generalTel')} onUpdate={(data) => handleUpdate('generalTel', data)} />
+                                        ) : (
+                                            <div className={getClasses('generalTel')}>{getLabel('generalTel')}</div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
 
+                            {/* HVAC Enquiries — Mail icon */}
+                            <div className="flex items-start">
+                                <div className="flex-shrink-0 bg-white p-3 border border-slate-200 shadow-sm rounded-lg text-blue-600">
+                                    <Mail className="w-6 h-6" />
+                                </div>
+                                <div className="ml-5">
+                                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest">
+                                        {isEditable ? (
+                                            <InlineText as="span" content={getLabel('hvacEnquiries')} className={getClasses('hvacEnquiries')} onUpdate={(data) => handleUpdate('hvacEnquiries', data)} />
+                                        ) : (
+                                            <span className={getClasses('hvacEnquiries')}>{getLabel('hvacEnquiries')}</span>
+                                        )}
+                                    </h3>
+                                    <p className="mt-1 text-slate-800 font-semibold text-sm">{getLabel('hvacName')}</p>
+                                    <a href={`mailto:${getLabel('hvacEmail')}`} className="text-slate-500 hover:text-slate-700 text-sm">
+                                        {getLabel('hvacEmail')}
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Fire & Swimming Pool — Mail icon */}
+                            <div className="flex items-start">
+                                <div className="flex-shrink-0 bg-white p-3 border border-slate-200 shadow-sm rounded-lg text-blue-600">
+                                    <Mail className="w-6 h-6" />
+                                </div>
+                                <div className="ml-5">
+                                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest">
+                                        {isEditable ? (
+                                            <InlineText as="span" content={getLabel('firePoolEnquiries')} className={getClasses('firePoolEnquiries')} onUpdate={(data) => handleUpdate('firePoolEnquiries', data)} />
+                                        ) : (
+                                            <span className={getClasses('firePoolEnquiries')}>{getLabel('firePoolEnquiries')}</span>
+                                        )}
+                                    </h3>
+                                    <p className="mt-1 text-slate-800 font-semibold text-sm">{getLabel('firePoolName')}</p>
+                                    <a href={`mailto:${getLabel('firePoolEmail')}`} className="text-slate-500 hover:text-slate-700 text-sm">
+                                        {getLabel('firePoolEmail')}
+                                    </a>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
