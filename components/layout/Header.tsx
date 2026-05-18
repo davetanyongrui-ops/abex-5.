@@ -241,7 +241,6 @@ export function Header() {
                         {/* Menu Footer */}
                         <div className="px-6 py-5 border-t border-slate-100 bg-slate-50">
                             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-3">Contact</p>
-                            <p className="text-sm text-slate-500 font-sans">sales@abex-engrg.com</p>
                             <p className="text-sm text-slate-500 font-sans">+65 6841 2818</p>
                         </div>
                     </div>
