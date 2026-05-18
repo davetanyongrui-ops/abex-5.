@@ -138,10 +138,6 @@ export function Footer() {
                                 <Phone className="text-orange-500 shrink-0" size={20} />
                                 <p>+65 6841 2818</p>
                             </div>
-                            <div className="flex items-center gap-4">
-                                <Mail className="text-orange-500 shrink-0" size={20} />
-                                <p>sales@abex-engrg.com</p>
-                            </div>
                         </div>
                     </div>
 
