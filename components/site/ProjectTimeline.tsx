@@ -1,17 +1,14 @@
 "use client";
-
 import { Building2, Calendar, CheckCircle2, ChevronDown } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
 export function ProjectTimeline() {
     const t = useTranslations('ProjectsPage');
     const locale = useLocale();
     const isZh = locale === 'zh';
-    const [activeYear, setActiveYear] = useState("2024");
-
+    const [activeYear, setActiveYear] = useState("2026");
     const formatDate = (dateStr: string) => {
         if (!isZh) return dateStr;
         const months: Record<string, string> = {
@@ -25,10 +22,60 @@ export function ProjectTimeline() {
         });
         return localized;
     };
-
-    const years = ["2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014"];
-
+    const years = ["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014"];
     const projectData = {
+        "2026": [
+            { name: "CBP Hotel", client: "Wui Hong M&E Engrg Pte Ltd", date: "Jan'26" },
+            { name: "The Legend", client: "Aquatech Products & Services Pte Ltd", date: "Jan'26" },
+            { name: "The Oceanfront", client: "Hitachi Aqua-Tech Engrg Pte Ltd", date: "Feb'26" },
+            { name: "Safran", client: "Standard Engrg Pte Ltd", date: "Feb'26" },
+            { name: "Tan Tock Seng Hospital", client: "Progen Pte Ltd", date: "Feb'26" },
+            { name: "Sandbox @ George Street", client: "Alstern Technologies Pte Ltd", date: "Mar'26" },
+            { name: "KK Hospital", client: "Carrier (S) Pte Ltd", date: "Mar'26" },
+            { name: "Resort World at Sentosa", client: "-", date: "Mar'26" },
+            { name: "Tekscend @ TIA", client: "Trident Switchgear Pte Ltd", date: "Mar'26" }
+        ],
+        "2025": [
+            { name: "DSO", client: "Johnson Control (S) Pte Ltd", date: "Jan'25" },
+            { name: "ST Microelectronics", client: "Alstern Technologies Pte Ltd", date: "Jan'25" },
+            { name: "Singtel Kim Chuan 2", client: "Promach Pte Ltd", date: "Jan'25" },
+            { name: "Founders' Memorial", client: "DLM Pte Ltd", date: "Jan'25" },
+            { name: "Lentor Hill Parcel B", client: "Trident Switchgear Pte Ltd", date: "Feb'25" },
+            { name: "IBMS @ Epsilon", client: "Cosy Ace Engrg Pte Ltd", date: "Feb'25" },
+            { name: "World Aquatics", client: "Innovez Engrg Pte Ltd", date: "Feb'25" },
+            { name: "PDG", client: "Command Air Pte Ltd", date: "Feb'25" },
+            { name: "Resort World of Sentosa", client: "-", date: "Mar'25" },
+            { name: "Fuyu project", client: "SPC Holdings Pte Ltd", date: "Mar'25" },
+            { name: "MHA", client: "Rinju Air-Conditioning Pte Ltd", date: "Apr'25" },
+            { name: "Abbvie Singapore", client: "Wynergy Engrg Pte Ltd", date: "Apr'25" },
+            { name: "NUS Cultural Centre", client: "D-Team Engrg Pte Ltd", date: "Apr'25" },
+            { name: "Blk 113F, Sembawang Airbase", client: "Mainland Engrg Pte Ltd", date: "May'25" },
+            { name: "Science Park", client: "GD Engrg Pt Ltd", date: "Jun'25" },
+            { name: "Cleantech 1", client: "1E Services Pte Ltd", date: "Jun'25" },
+            { name: "Heart of Yew Tee", client: "Sunbeam M&E Pte Ltd", date: "Jul'25" },
+            { name: "Sommerset Live", client: "Trident Switchgear Pte Ltd", date: "Jul'25" },
+            { name: "NUS", client: "DLM Pte Ltd", date: "Jul'25" },
+            { name: "Ventco Engrg Pte Ltd", client: "-", date: "Jul'25" },
+            { name: "NTU @ Nanyang Executive Centre", client: "Yinsheng Engrg Pte Ltd", date: "Jul'25" },
+            { name: "AMAT @ TIC", client: "E-HPS Pte Ltd", date: "Jul'25" },
+            { name: "AMAT", client: "Koud Pte Ltd", date: "Aug'25" },
+            { name: "West Coast Plaze", client: "Guan Lee Hoe Pte Ltd", date: "Aug'25" },
+            { name: "51 Seletar Aerospace", client: "Uniwes Engrg Pte Ltd", date: "Sep'25" },
+            { name: "Far East Square", client: "Guan Lee Hoe Engrg Pte Ltd", date: "Sep'25" },
+            { name: "Resort World at Sentosa", client: "-", date: "Sep'25" },
+            { name: "Statschipac", client: "Synergex Pte Ltd", date: "Sep'25" },
+            { name: "Takeda", client: "Yamato Energy Pte Ltd", date: "Sep'25" },
+            { name: "Grand Dunman", client: "Aquatech Products & Services Pte Ltd", date: "Oct'25" },
+            { name: "The Myst", client: "Aquatech Products & Services Pte Ltd", date: "Oct'25" },
+            { name: "Singapore Island Country Club", client: "D-Team Pte Ltd", date: "Oct'25" },
+            { name: "JTC Cleantech", client: "Leap Integrated Pte Ltd", date: "Nov'25" },
+            { name: "Seagate W1 Plant", client: "Lewe Engrg Pte Ltd", date: "Nov'25" },
+            { name: "Jurong East Polyclinic", client: "GWTech Engrg Pte Ltd", date: "Nov'25" },
+            { name: "AMQ Camp", client: "Trident Switchgear Pte Ltd", date: "Nov'25" },
+            { name: "Ardentec", client: "Cleantech Engrg Pte Ltd", date: "Dec'25" },
+            { name: "The Estuary", client: "GM Tech & Engrg Pte Ltd", date: "Dec'25" },
+            { name: "Denslight", client: "Aim AirCond Engrg Pte Ltd", date: "Dec'25" }
+        ],
         "2024": [
             { name: "Connexion", client: "Guan Lee Hoe Engrg Pte Ltd", date: "Jan'24" },
             { name: "Ardentec", client: "Cleantech Engrg (S) Pte Ltd", date: "Jan'24" },
@@ -45,7 +92,21 @@ export function ProjectTimeline() {
             { name: "One Shenton", client: "Hitachi Aqua-Tech Engrg Pte Ltd", date: "May'24" },
             { name: "S25 Project", client: "Mech Flo Technologies Pte Ltd", date: "May'24" },
             { name: "Shell Bukom", client: "Carrier Singapore Pte Ltd", date: "Jun'24" },
-            { name: "18 Jalan Besut", client: "Trident Switchgear Pte Ltd", date: "Jun'24" }
+            { name: "18 Jalan Besut", client: "Trident Switchgear Pte Ltd", date: "Jun'24" },
+            { name: "National Park at Peruhu Road", client: "DS M&E Pte Ltd", date: "Jul'24" },
+            { name: "Tengah Garden Walk", client: "Hitachi Aqua-Tech Engrg Pte Ltd", date: "Aug'24" },
+            { name: "25 Lentor Road", client: "Trident Switchgear Pte Ltd", date: "Aug'24" },
+            { name: "Changi Logistic Centre", client: "Guan Lee Hoe Engrg Pte Ltd", date: "Aug'24" },
+            { name: "The Myst", client: "Trident Switchgear Pte Ltd", date: "Aug'24" },
+            { name: "One George Street", client: "Yorkool Pte Ltd", date: "Sep'24" },
+            { name: "Changi Airfreight Center", client: "D-Team Engrg Pte Ltd", date: "Sep'24" },
+            { name: "A-Star", client: "Acromec Engineers Pte Ltd", date: "Sep'24" },
+            { name: "NTU", client: "JAD Solutions Pte Ltd", date: "Sep'24" },
+            { name: "Far East Plaza", client: "Super Tower Ind Pte Ltd", date: "Nov'24" },
+            { name: "Lentor Central", client: "Modern Pools Pte Ltd", date: "Nov'24" },
+            { name: "NTU", client: "Men'spool Engineering Pte Ltd", date: "Dec'24" },
+            { name: "Farrer Park Connexion", client: "Guan Lee Hoe Engrg Pte Ltd", date: "Dec'24" },
+            { name: "Fragrance Hotel @ Hoe Chiang Road", client: "Accon Engrg Pte Ltd", date: "Dec'24" }
         ],
         "2023": [
             { name: "Thales", client: "Yorkool Pte Ltd", date: "Jan'23" },
@@ -374,7 +435,6 @@ export function ProjectTimeline() {
             { name: "Ripple Bay", client: "Aquatech Products & Services P/L", date: "Dec'14" }
         ],
     };
-
     return (
         <section className="py-12 md:py-24 max-w-7xl mx-auto px-4 md:px-8 text-left">
             <Tabs value={activeYear} onValueChange={setActiveYear} className="w-full">
@@ -382,7 +442,6 @@ export function ProjectTimeline() {
                     {/* Year Selector (Side) */}
                     <div className="w-full lg:w-[280px] lg:shrink-0">
                         <h3 className="text-xs md:text-sm font-black text-slate-900 uppercase tracking-widest mb-6 border-b-2 border-slate-900 pb-2">{t('selectYear')}</h3>
-
                         {/* Mobile/Tablet Dropdown */}
                         <div className="relative lg:hidden mb-8">
                             <select
@@ -398,7 +457,6 @@ export function ProjectTimeline() {
                                 <ChevronDown className="w-5 h-5" />
                             </div>
                         </div>
-
                         {/* Desktop List */}
                         <TabsList className="hidden lg:flex flex-wrap bg-transparent !h-auto p-0 gap-2 w-full">
                             {years.map(year => (
@@ -412,7 +470,6 @@ export function ProjectTimeline() {
                             ))}
                         </TabsList>
                     </div>
-
                     {/* Project List (Main) */}
                     <div className="flex-1 min-w-0">
                         {years.map(year => (
@@ -427,7 +484,6 @@ export function ProjectTimeline() {
                                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter">{t('installationsTitle', { year })}</h2>
                                         <div className="flex-1 border-t-2 border-slate-100" />
                                     </div>
-
                                     <motion.div
                                         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                                         initial="hidden"
