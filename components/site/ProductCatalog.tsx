@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -8,7 +7,6 @@ import { Download, Droplet, Search, ChevronRight } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { Input } from '@/components/ui/input';
 import { CertificationsList } from '@/lib/utils/certification-mapping';
-
 export function ProductCatalog() {
     const t = useTranslations('ProductsPage');
     const locale = useLocale();
@@ -17,14 +15,12 @@ export function ProductCatalog() {
     const [isLoading, setIsLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
     const supabase = createClient();
-
     useEffect(() => {
         const fetchProducts = async () => {
             const { data } = await supabase
                 .from('products')
                 .select('*')
                 .order('created_at', { ascending: false });
-
             const ORDER: string[] = [
                 "pa series",
                 "pa series - fire pump",
@@ -40,13 +36,11 @@ export function ProductCatalog() {
                 "pbs series",
                 "pem series",
             ];
-
             const getOrder = (product: any): number => {
                 const name = (product.name || "").toLowerCase();
                 const brand = (product.specs_json?.brand || "").toLowerCase();
                 const isWeinman = name.includes("weinman") || brand.includes("weinman");
                 if (isWeinman) return ORDER.length + 1; // Weinman always last
-
                 // Find the most specific (longest) matching key to avoid "pa series"
                 // swallowing "pa series - fire pump"
                 const bestIdx = ORDER.reduce((best, key, i) => {
@@ -55,24 +49,18 @@ export function ProductCatalog() {
                     }
                     return best;
                 }, -1);
-
                 return bestIdx === -1 ? ORDER.length : bestIdx;
             };
-
             const sortedData = (data || []).sort((a: any, b: any) => getOrder(a) - getOrder(b));
-
-
             setProducts(sortedData);
             setIsLoading(false);
         };
         fetchProducts();
     }, [supabase]);
-
     const filteredCatalog = products.filter(product =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.slug.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
     return (
         <section className="bg-slate-50 py-20 min-h-screen">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -86,7 +74,6 @@ export function ProductCatalog() {
                             {t('heroSubtitle')}
                         </p>
                     </div>
-
                     <div className="relative w-full md:max-w-sm shrink-0">
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <Input
@@ -97,7 +84,6 @@ export function ProductCatalog() {
                         />
                     </div>
                 </div>
-
                 {isLoading ? (
                     <div className="py-32 flex flex-col items-center justify-center text-slate-400">
                         <div className="w-12 h-12 border-4 border-slate-100 border-t-primary rounded-full animate-spin mb-6" />
@@ -113,7 +99,6 @@ export function ProductCatalog() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {filteredCatalog.map((product) => (
                             <div key={product.id} className="group flex flex-col bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden relative">
-
                                 <Link href={`/products/${product.slug}`} className="relative h-48 w-full overflow-hidden bg-gray-50 block p-4 border-b border-slate-100">
                                     {product.image_url ? (
                                         <Image
@@ -128,7 +113,6 @@ export function ProductCatalog() {
                                         </div>
                                     )}
                                 </Link>
-
                                 <div className="flex flex-col flex-grow p-5">
                                     <div className="mb-3 flex-grow">
                                         <Link href={`/products/${product.slug}`} className="block mb-2">
@@ -137,9 +121,8 @@ export function ProductCatalog() {
                                             </h3>
                                         </Link>
                                         <div className="mb-3">
-                                            <CertificationsList certifications={product.certifications} />
+                                            <CertificationsList certifications={product.certifications} badgeSize="small" />
                                         </div>
-
                                         {/* Technical Specs Summary */}
                                         {product.specs_json && (
                                             <div className="space-y-1.5 mt-4">
@@ -156,7 +139,6 @@ export function ProductCatalog() {
                                             </div>
                                         )}
                                     </div>
-
                                     <div className="flex items-center justify-between pt-5 mt-auto border-t border-slate-100">
                                         <Link
                                             href={`/products/${product.slug}`}
