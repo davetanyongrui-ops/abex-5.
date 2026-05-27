@@ -521,7 +521,7 @@ export function ProjectTimeline() {
                                                 <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
                                                     <div className="flex items-center gap-2 text-sm font-bold text-slate-700">
                                                         <Calendar className="w-4 h-4 text-slate-400" />
-                                                        {t('completed')} {formatDate(project.date)}
+                                                         {formatDate(project.date)}
                                                     </div>
                                                     <div className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-black tracking-widest uppercase">
                                                         <CheckCircle2 className="w-3.5 h-3.5" />
