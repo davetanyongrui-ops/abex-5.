@@ -1,3 +1,53 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useId, useState } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { FaCertificate, FaShieldAlt, FaLeaf, FaCheckCircle } from "react-icons/fa";
+import type { IconType } from "react-icons";
+
+export const CERTIFICATION_MAP: Record<string, { label: string; icon: IconType; color: string; logo: string; priority: number; logoWidth: number; logoHeight: number; widthClass: string; heightClass: string }> = {
+    "ISO 9001": {
+        label: "ISO 9001",
+        icon: FaCertificate,
+        color: "text-blue-600 bg-blue-50 border-blue-100",
+        logo: "/assets/certs/iso logo 9001 new 3.png",
+        priority: 1,
+        logoWidth: 91,
+        logoHeight: 32,
+        widthClass: "w-[91px]",
+        heightClass: "h-8"
+    },
+    "Singapore Green Building Council": {
+        label: "SGBC",
+        icon: FaLeaf,
+        color: "text-green-600 bg-green-50 border-green-100",
+        logo: "/images/cert-sgbc.png",
+        priority: 2,
+        logoWidth: 32,
+        logoHeight: 32,
+        widthClass: "w-8",
+        heightClass: "h-8"
+    },
+    "Setsco": {
+        label: "Setsco",
+        icon: FaShieldAlt,
+        color: "text-slate-600 bg-slate-50 border-slate-200",
+        logo: "/images/cert-setsco.png",
+        priority: 3,
+        logoWidth: 32,
+        logoHeight: 32,
+        widthClass: "w-8",
+        heightClass: "h-8"
+    },
+    "bizSAFE Level 3": {
+        label: "bizSAFE 3",
+        icon: FaCheckCircle,
+        color: "text-orange-600 bg-orange-50 border-orange-100",
+        logo: "/images/bizsafe3_logo.png",
+        priority: 4,
+        logoWidth: 58,
         logoHeight: 32,
         widthClass: "w-[58px]",
         heightClass: "h-8"
